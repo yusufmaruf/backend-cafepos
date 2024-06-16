@@ -39,10 +39,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text"
-                                    class="form-control @error('name')
-                                is-invalid
-                            @enderror"
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" value="{{ $user->name }}">
                                 @error('name')
                                     <div class="invalid-feedback">
@@ -52,10 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email"
-                                    class="form-control @error('email')
-                                is-invalid
-                            @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{ $user->email }}">
                                 @error('email')
                                     <div class="invalid-feedback">
@@ -71,10 +65,7 @@
                                             <i class="fas fa-lock"></i>
                                         </div>
                                     </div>
-                                    <input type="password"
-                                        class="form-control @error('password')
-                                is-invalid
-                            @enderror"
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
                                         name="password">
                                 </div>
                                 @error('password')
@@ -91,18 +82,18 @@
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="admin" class="selectgroup-input"
-                                            @if ($user->roles == 'admin') checked @endif>
+                                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
+                                            @if ($user->roles == 'ADMIN') checked @endif>
                                         <span class="selectgroup-button">Admin</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="staff" class="selectgroup-input"
-                                            @if ($user->roles == 'staff') checked @endif>
+                                        <input type="radio" name="roles" value="STAFF" class="selectgroup-input"
+                                            @if ($user->roles == 'STAFF') checked @endif>
                                         <span class="selectgroup-button">Staff</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="user" class="selectgroup-input"
-                                            @if ($user->roles == 'user') checked @endif>
+                                        <input type="radio" name="roles" value="USER" class="selectgroup-input"
+                                            @if ($user->roles == 'USER') checked @endif>
                                         <span class="selectgroup-button">User</span>
                                     </label>
 
