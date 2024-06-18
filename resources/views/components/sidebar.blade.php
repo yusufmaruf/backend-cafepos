@@ -22,6 +22,10 @@
             <li><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i>
                     <span>Pengguna</span></a>
             </li>
+            <li class="{{ Request::is('product*') ? 'active' : '' }}"><a class="nav-link "2
+                    href="{{ route('product.index') }}"><i class="fas fa-cubes"></i>
+                    <span>Produk</span></a>
+            </li>
 
 
         </ul>

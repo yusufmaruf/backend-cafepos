@@ -21,11 +21,22 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|max:100|min:3',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'roles' => 'required',
-        ];
+        if ($this->password) {
+            return [
+                'name' => 'required|max:100|min:3',
+                'email' => 'required|email',
+                'password' => 'required|min:8',
+                'phone' => 'required',
+                'roles' => 'required',
+            ];
+        }else{
+            return [
+                'name' => 'required|max:100|min:3',
+                'email' => 'required|email',
+                'phone' => 'required',
+                'roles' => 'required',
+            ];
+        }
+
     }
 }
