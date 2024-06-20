@@ -30,6 +30,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $data =  $request->all();
@@ -41,13 +42,45 @@ class ProductController extends Controller
             $file->move(public_path('store/images/product'), $filename);
             $data['image'] = '/store/images/product/' . $filename;
         }
+
         Product::create($data);
+
         return redirect()->route('product.index');
     }
     public function edit($id)
     {
         $product = Product::findOrFail($id);
         return view('pages.products.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+        $data =  $request->all();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $filename = $originalName . '_' . time() . '.' . $extension;
+            $file->move(public_path('store/images/product'), $filename);
+            $data['image'] = '/store/images/product/' . $filename;
+        }
+        $product = Product::findOrFail($id);
+        $product->update($data);
+        return redirect()->route('product.index');
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+        if ($product->image)  {
+            unlink(public_path($product->image));
+        }
+        $product->delete();
+        return redirect()->route('product.index');
     }
 
 
