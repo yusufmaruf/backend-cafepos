@@ -26,6 +26,10 @@
                     href="{{ route('product.index') }}"><i class="fas fa-cubes"></i>
                     <span>Produk</span></a>
             </li>
+            <li class="{{ Request::is('order*') ? 'active' : '' }}"><a class="nav-link "2
+                    href="{{ route('order.index') }}"><i class="fas fa-cubes"></i>
+                    <span>All Orders</span></a>
+            </li>
 
 
         </ul>
