@@ -7,20 +7,13 @@
             <a href="index.html">PC</a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                <ul class="dropdown-menu">
-                    <li class='{{ Request::is('dashboard-general-dashboard') ? 'active' : '' }}'>
-                        <a class="nav-link" href="{{ url('dashboard-general-dashboard') }}">General Dashboard</a>
-                    </li>
-                    <li class="{{ Request::is('dashboard-ecommerce-dashboard') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('dashboard-ecommerce-dashboard') }}">Ecommerce Dashboard</a>
-                    </li>
-                </ul>
+
+            <li><a class="nav-link" href=""><i class="fas fa-dashboard"></i>
+                    <span>Dashboard</span></a>
             </li>
-            <li><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i>
-                    <span>Pengguna</span></a>
+            <li class="{{ Request::is('user*') ? 'active' : '' }}"><a class="nav-link "2
+                    href="{{ route('user.index') }}"><i class="fas fa-users"></i>
+                    <span>User</span></a>
             </li>
             <li class="{{ Request::is('product*') ? 'active' : '' }}"><a class="nav-link "2
                     href="{{ route('product.index') }}"><i class="fas fa-cubes"></i>
@@ -29,6 +22,10 @@
             <li class="{{ Request::is('order*') ? 'active' : '' }}"><a class="nav-link "2
                     href="{{ route('order.index') }}"><i class="fas fa-cubes"></i>
                     <span>All Orders</span></a>
+            </li>
+            <li class="{{ Request::is('site-identity*') ? 'active' : '' }}"><a class="nav-link "2
+                    href="{{ route('site-identity.index') }}"><i class="fas fa-gear"></i>
+                    <span>Site Identity</span></a>
             </li>
 
 

@@ -12,7 +12,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    @stack('style')
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -31,6 +31,7 @@
         gtag('config', 'UA-94034622-3');
     </script>
     <!-- END GA -->
+    @stack('style')
 </head>
 </head>
 
@@ -60,11 +61,11 @@
     <script src="{{ asset('library/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('js/stisla.js') }}"></script>
 
-    @stack('scripts')
 
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>

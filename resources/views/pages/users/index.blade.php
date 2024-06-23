@@ -5,6 +5,7 @@
 @push('style')
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
 @endpush
 
 @section('main')
@@ -55,7 +56,7 @@
                                 <div class="clearfix mb-3"></div>
 
                                 <div class="table-responsive">
-                                    <table class="table-striped table">
+                                    <table class="table-striped table" id="example">
                                         <tr>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -115,6 +116,16 @@
     <!-- JS Libraies -->
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
+
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.confirm-delete').on('click', function() {
+                return confirm('Are you sure?');
+            });
+            $('#example').DataTable();
+        });
+    </script>
 @endpush

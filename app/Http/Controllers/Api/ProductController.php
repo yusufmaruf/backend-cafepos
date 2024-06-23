@@ -77,19 +77,13 @@ class ProductController extends Controller
      */
     public function update(Request $request,  $id)
     {
+
         $request->validate([
             'name' => 'required',
             'price' => 'required',
         ]);
         $data =  $request->all();
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-            $extension = $file->getClientOriginalExtension();
-            $filename = $originalName . '_' . time() . '.' . $extension;
-            $file->move(public_path('store/images/product'), $filename);
-            $data['image'] = '/store/images/product/' . $filename;
-        }
+
         $product = Product::findOrFail($id);
         $product->update($data);
         if($product){
@@ -120,5 +114,33 @@ class ProductController extends Controller
             'success' => true,
             'message' => 'Product deleted successfully.',
         ],200);
+    }
+
+    public function updateImage(Request $request, $id)
+    {
+
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $filename = $originalName . '_' . time() . '.' . $extension;
+            $file->move(public_path('store/images/product'), $filename);
+            $imagePath = '/store/images/product/' . $filename;
+
+            $product = Product::findOrFail($id);
+            $product->update(['image' => $imagePath]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Product image updated successfully.',
+                'data' => $product
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Image upload failed.',
+            ], 409);
+        }
     }
 }

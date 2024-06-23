@@ -1,3 +1,3 @@
   <div class="simple-footer">
-      Copyright &copy; Teman Tera 2024
+      Copyright &copy; Kawan Rengganis 2024
   </div>
